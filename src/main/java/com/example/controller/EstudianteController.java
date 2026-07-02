@@ -36,7 +36,7 @@ public class EstudianteController {
     public String listarEstudiantes(Model model) {
 
         model.addAttribute("estudiantes", estudianteService.getAllEstudiantes());
-        return "ListadoEstudiantes";
+        return "listadoEstudiantes";
     }
 
     @GetMapping("/Alta")
@@ -47,7 +47,7 @@ public class EstudianteController {
 
         model.addAttribute("estudiante", estudiante);
         model.addAttribute("facultades", facultadService.getAllFacultades());
-        return "AltaEstudiante";
+        return "altaEstudiante";
     }
 
     @PostMapping("/Save")
