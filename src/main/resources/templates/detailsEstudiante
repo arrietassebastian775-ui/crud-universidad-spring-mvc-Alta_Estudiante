@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles del Estudiante</title>
+</head>
+<body>
+    <h1 th:text="'Detalles del estudiante: ' 
+                + ${estudiante.nombre} + ' ' 
+                + ${estudiante.primerApellido} + ' '
+                + ${estudiante.segundoApellido}"></h1>
+
+    <h2 th:text="'Facultad: ' + ${estudiante.facultad.nombre}"></h2>
+    <h2 th:text="'Fecha de Matriculación: ' + ${estudiante.FechadeMatriculacionFacultad}"></h2>
+
+    <div th:if="${estudiante.telefonos.size() > 0}">
+        <h2>Telefonos: </h2>
+        <ul>
+            <li th:each="telefono : ${estudiante.telefonos}" th:text="${telefono.numero}"></li>
+        </ul>
+    </div>
+
+    <div th:if="${estudiante.correos.size() > 0}">
+        <h2>Correos: </h2>
+        <ul>
+            <li th:each="correo : ${estudiante.correos}" th:text="${correo.direccion}"></li>
+        </ul>
+    </div>
+
+    <div th:if="${estudiante.foto != null}">
+        <h2>Foto: </h2>
+        <img th:src="@{/imagenes/}+${estudiante.foto}" alt="Foto del Estudiante" style="max-width:200px;">
+    </div>
+
+    <a th:href="@{/estudiantes/listar}">Volver al listado</a>
+</body>
+</html>

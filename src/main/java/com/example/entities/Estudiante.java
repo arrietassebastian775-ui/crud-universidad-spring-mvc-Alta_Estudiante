@@ -62,4 +62,6 @@ public class Estudiante {
     @Builder.Default
     private Set<Correo> correos = new HashSet<>();
 
+    private String foto;
+
 }

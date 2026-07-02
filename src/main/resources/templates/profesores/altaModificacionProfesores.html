@@ -66,7 +66,7 @@
 			<div>
 				<label for="fechaAlta">Fecha de Alta: </label>
 				<input type="date" id="fechaAlta" name="fechaAlta" th:field="*{fechaAltaFacultad}">
-				<p th:if="${#fields.hasErrors('fechaAlta')}" 
+				<p th:if="${#fields.hasErrors('fechaAltaFacultad')}" 
 				   th:errors="*{fechaAltaFacultad}"
 				   class="error">Fecha Incorrecta</p>
 			</div>

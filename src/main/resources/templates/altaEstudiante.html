@@ -6,7 +6,8 @@
 </head>
 <body>
 	<h1>Alta de Estudiante</h1>
-	<form th:action="@{/estudiantes/persistir}" method="post" th:object="${estudiante}">
+	<form th:action="@{/estudiantes/persistir}" method="post" 
+	      th:object="${estudiante}" enctype="multipart/form-data">
 		<div>
 			<label>Nombre: </label>
 			<input type="text" th:field="*{nombre}">
@@ -18,6 +19,21 @@
 		<div>
 			<label>Segundo Apellido: </label>
 			<input type="text" th:field="*{segundoApellido}">
+		</div>
+		<div>
+			<fieldset>
+				<legend>Genero</legend>
+				<label>Hombre: </label>
+				<input type="radio" name="genero" value="HOMBRE" th:field="*{genero}">
+				<label>Mujer: </label>
+				<input type="radio" name="genero" value="MUJER" th:field="*{genero}">
+				<label>Otro: </label>
+				<input type="radio" name="genero" value="OTRO" th:field="*{genero}">
+			</fieldset>
+		</div>
+		<div>
+			<label>Fecha de Matriculación: </label>
+			<input type="date" th:field="*{FechadeMatriculacionFacultad}">
 		</div>
 		<div>
 			<label>Facultad: </label>
@@ -33,6 +49,14 @@
 		<div>
 			<label>Correos (separados por ;): </label>
 			<input type="text" name="mail">
+		</div>
+		<div>
+			<label>Foto del Estudiante: </label>
+			<input type="file" name="file">
+			<div th:if="${estudiante.id != 0 and estudiante.foto != null}">
+				<h4>Foto actual:</h4>
+				<img th:src="@{/imagenes/}+${estudiante.foto}" alt="Foto del Estudiante" style="max-width:150px;">
+			</div>
 		</div>
 		<div>
 			<input type="submit" value="Guardar">
