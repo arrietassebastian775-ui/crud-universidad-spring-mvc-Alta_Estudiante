@@ -31,7 +31,7 @@ public class Facultad {
 
     private String nombre;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "estudiante")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "facultad")
     private List<Estudiante> estudiantes;
 
 }

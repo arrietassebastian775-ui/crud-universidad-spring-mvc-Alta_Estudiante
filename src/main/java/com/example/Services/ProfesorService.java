@@ -5,7 +5,17 @@ import java.util.List;
 import com.example.entities.Profesor;
 
 public interface ProfesorService {
-    void saveProfesor(Profesor profesor);
-    List<Profesor> getAllProfesores();
+
+   List<Profesor> getAllProfesores();
+
+   Profesor getProfesorById(int id);
+
+   Profesor saveProfesor(Profesor profesor);
+
+   void deleteProfesor(int id);
+
+   void deleteProfesor(Profesor profesor);
+
+   Profesor updateProfesor(Profesor profesor);
 
 }

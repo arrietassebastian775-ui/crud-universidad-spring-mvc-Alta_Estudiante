@@ -31,4 +31,7 @@ public class Correo {
     @ManyToOne(fetch = FetchType.LAZY)
     private Estudiante estudiante;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Profesor profesor;
+
 }

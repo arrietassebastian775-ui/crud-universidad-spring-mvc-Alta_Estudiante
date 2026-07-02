@@ -30,5 +30,8 @@ public class Telefono {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Estudiante estudiante;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Profesor profesor;
  
 }
