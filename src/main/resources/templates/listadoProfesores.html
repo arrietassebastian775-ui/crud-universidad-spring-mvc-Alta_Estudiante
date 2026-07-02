@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Listado de Profesores</title>
+</head>
+<body>
+	<h1>Listado de Profesores</h1>
+
+	<div>
+		<a th:href="@{/profesores/nuevo}">Alta Profesor</a>
+	</div>
+
+	<table>
+		<thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Primer Apellido</th>
+                <th>Segundo Apellido</th>
+                <th>Genero</th>
+                <th>Salario</th>
+                <th>Fecha de Alta</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        	<tr th:each="profesor : ${profesores}">
+        		<td th:text="${profesor.nombre}"></td>
+        		<td th:text="${profesor.primerApellido}"></td>
+        		<td th:text="${profesor.segundoApellido}"></td>
+        		<td th:text="${profesor.genero}"></td>
+        		<td th:text="${profesor.salario}"></td>
+        		<td th:text="${profesor.fechaAltaFacultad}"></td>
+        		<td>
+					<a th:href="@{/profesores/details/{id}(id=${profesor.id})}">Detalles</a> |
+                    <a th:href="@{/profesores/editar/{id}(id=${profesor.id})}">Actualizar</a> |
+                    <a th:href="@{/profesores/eliminar/{id}(id=${profesor.id})}"
+                       onclick="return confirm('¿Seguro que quieres eliminar este profesor?');">Eliminar</a>
+                </td>
+        	</tr>
+        </tbody>
+	</table>
+</body>
+</html>

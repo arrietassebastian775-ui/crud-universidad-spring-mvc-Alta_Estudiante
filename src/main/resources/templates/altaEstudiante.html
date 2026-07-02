@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Alta Estudiante</title>
+</head>
+<body>
+	<h1>Alta de Estudiante</h1>
+	<form th:action="@{/estudiantes/persistir}" method="post" th:object="${estudiante}">
+		<div>
+			<label>Nombre: </label>
+			<input type="text" th:field="*{nombre}">
+		</div>
+		<div>
+			<label>Primer Apellido: </label>
+			<input type="text" th:field="*{primerApellido}">
+		</div>
+		<div>
+			<label>Segundo Apellido: </label>
+			<input type="text" th:field="*{segundoApellido}">
+		</div>
+		<div>
+			<label>Facultad: </label>
+			<select th:field="*{facultad}">
+				<option value=""></option>
+				<option th:each="fac : ${facultades}" th:value="${fac.id}" th:text="${fac.nombre}"></option>
+			</select>
+		</div>
+		<div>
+			<label>Telefonos (separados por ;): </label>
+			<input type="text" name="numerostlf">
+		</div>
+		<div>
+			<label>Correos (separados por ;): </label>
+			<input type="text" name="mail">
+		</div>
+		<div>
+			<input type="submit" value="Guardar">
+		</div>
+	</form>
+</body>
+</html>
