@@ -56,6 +56,25 @@ public class EstudianteController {
         return "altaEstudiante";
     }
 
+    @GetMapping("/editar/{id}")
+    public String editar(@PathVariable int id, Model model) {
+        model.addAttribute("estudiante", estudianteService.getEstudianteById(id));
+        model.addAttribute("facultades", facultadService.getAllFacultades());
+        return "altaEstudiante";
+    }
+
+    @GetMapping("/eliminar/{id}")
+    public String eliminar(@PathVariable int id) {
+        estudianteService.deleteEstudiante(id);
+        return "redirect:/estudiantes/listar";
+    }
+
+    @GetMapping("/details/{id}")
+    public String detalles(@PathVariable int id, Model model) {
+        model.addAttribute("estudiante", estudianteService.getEstudianteById(id));
+        return "detailsEstudiante";
+    }
+
     @PostMapping("/persistir")
     public String procesarFormularioAltaModificacion(@ModelAttribute Estudiante estudiante,
             @RequestParam(name = "numerostlf", required = false) String numtlf,
@@ -94,14 +113,5 @@ public class EstudianteController {
         estudianteService.saveEstudiante(estudiante);
 
         return "redirect:/estudiantes/listar";
-    }
-
-    @GetMapping("/details/{id}")
-    public String detalles(@PathVariable int id, Model model) {
-        model.addAttribute("estudiante", estudianteService.getAllEstudiantes().stream()
-                .filter(e -> e.getId() == id)
-                .findFirst()
-                .orElseThrow(() -> new RuntimeException("Estudiante no encontrado con id: " + id)));
-        return "detailsEstudiante";
     }
 }

@@ -8,6 +8,7 @@
 	<h1>Alta de Estudiante</h1>
 	<form th:action="@{/estudiantes/persistir}" method="post" 
 	      th:object="${estudiante}" enctype="multipart/form-data">
+		<input type="hidden" th:field="*{id}">
 		<div>
 			<label>Nombre: </label>
 			<input type="text" th:field="*{nombre}">

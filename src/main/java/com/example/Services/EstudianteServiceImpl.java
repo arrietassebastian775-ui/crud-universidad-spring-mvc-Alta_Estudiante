@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class EstudianteServiceImpl implements EstudianteService {
 
-     private final Estudiantedao estudianteDao;
+    private final Estudiantedao estudianteDao;
 
     @Override
     public void saveEstudiante(Estudiante estudiante) {
@@ -25,4 +25,14 @@ public class EstudianteServiceImpl implements EstudianteService {
         return estudianteDao.findAll();
     }
 
+    @Override
+    public Estudiante getEstudianteById(int id) {
+        return estudianteDao.findById(id).orElseThrow(() ->
+                new RuntimeException("Estudiante no encontrado con id: " + id));
+    }
+
+    @Override
+    public void deleteEstudiante(int id) {
+        estudianteDao.deleteById(id);
+    }
 }

@@ -19,6 +19,7 @@
                 <th>Facultad</th>
                 <th>Fecha de Matriculación</th>
                 <th>Foto</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -33,8 +34,13 @@
         			<img th:if="${estudiante.foto != null}" 
         			     th:src="@{/imagenes/}+${estudiante.foto}" 
         			     alt="Foto" style="max-width:60px;">
-                         <a th:href="@{/estudiantes/details/{id}(id=${estudiante.id})}">Detalles</a>
         		</td>
+        		<td>
+					<a th:href="@{/estudiantes/details/{id}(id=${estudiante.id})}">Detalles</a> |
+                    <a th:href="@{/estudiantes/editar/{id}(id=${estudiante.id})}">Actualizar</a> |
+                    <a th:href="@{/estudiantes/eliminar/{id}(id=${estudiante.id})}"
+                       onclick="return confirm('¿Seguro que quieres eliminar este estudiante?');">Eliminar</a>
+                </td>
         	</tr>
         </tbody>
 	</table>
